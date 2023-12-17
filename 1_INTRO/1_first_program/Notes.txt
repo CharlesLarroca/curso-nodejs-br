@@ -1,0 +1,1 @@
+Muito do javascript foi importado para o node, exceto funções de manipulação do DOM, ou elementos do HTML, CSS.

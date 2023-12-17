@@ -1,0 +1,16 @@
+module.export - exporta um codigo que criamos, tornado-o assim um modulo interno
+require - importa um modulo para o arquivo.
+export default - outro metodo para exportar um bloco de codigo, necessario configurar no json ou usar a extensão .mjs
+import - importa um modulo para o arquivo, necessario configurar no json ou usar a extensão .mjs
+
+core modules - são modulos ja existentes dentro do node
+
+é possivel passar argumentos via linha de comando, colocando estes argumentos depois do comando a ser executado, por exemplo node index.js, esse argumento ficam armazenados em forma de array dentro de um arquivo chamado process.argv
+
+modulos externo podem ser utilizado após a instalação via npm install <nome> e para iniciar o npm em um projeto npm init
+
+chalk - um modulo que melhora a visualização do console, por exemplo estilizar a fonte do que sera apresentado
+
+readline - core module que possibilita capturar os dados vindos do user
+
+inquirer - modulo externo que melhora a abstração dos dados e funciona com promises
