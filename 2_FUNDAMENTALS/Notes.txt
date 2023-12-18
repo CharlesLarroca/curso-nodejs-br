@@ -1,3 +1,7 @@
+Muito do javascript foi importado para o node, exceto funções de manipulação do DOM, ou elementos do HTML, CSS.
+
+Core Modules e Modulos de 3º(após serem instalados via npm install) podem sem importados para dentro do arquivo .js usando import ou require(atualmente mais utilizado) e salvando dentro de uma variavel, para que assim os metodos dentro deste modulo possa ser utilizado. Neste caso estamos importando o fs(file system) e usando o metodo readFile.
+
 module.export - exporta um codigo que criamos, tornado-o assim um modulo interno
 require - importa um modulo para o arquivo.
 export default - outro metodo para exportar um bloco de codigo, necessario configurar no json ou usar a extensão .mjs
@@ -9,8 +13,20 @@ core modules - são modulos ja existentes dentro do node
 
 modulos externo podem ser utilizado após a instalação via npm install <nome> e para iniciar o npm em um projeto npm init
 
-chalk - um modulo que melhora a visualização do console, por exemplo estilizar a fonte do que sera apresentado
+chalk - um modulo que melhora a visualização do console, por exemplo estilizar a fonte do que sera apresentado npm install chalk@4.1.2
 
 readline - core module que possibilita capturar os dados vindos do user
 
-inquirer - modulo externo que melhora a abstração dos dados e funciona com promises
+inquirer - modulo externo que melhora a abstração dos dados e funciona com promises npm install --save inquirer@^8.0.0
+
+event loop - mantem o node.js executando linha por linha de cima pra baixo.
+
+event emitter -  se comporta como o event listener no navegador, é um core module chamado events, precisa que seja instanciado uma classe eventEmitter.
+
+sync - codigo aguarda que linha finalize execução
+
+async - codigo continua executando as linhas durante a execução de uma linha async, e assim que ela finaliza o codigo apresenta o resultado
+
+throw - finaliza o programa e gera um erro
+
+try catch - evidencia o erro da forma que desejamos
