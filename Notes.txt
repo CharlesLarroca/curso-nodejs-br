@@ -30,3 +30,15 @@ async - codigo continua executando as linhas durante a execução de uma linha a
 throw - finaliza o programa e gera um erro
 
 try catch - evidencia o erro da forma que desejamos
+
+Core Modules fundamentais
+  http - modulo para criar servidores http (responde uma requisição com dados html), é por ex a base do express, metodos utilizados, createServer(cria um servidor), liste(determina a porta)
+    statusCode - informa o codigo da requisição, ex: 400 falha de servidor
+    setHeader - altera o conteudo que será retornado
+
+  path - trabalha o caminho dos arquivos
+  fs - leitura e escrita de arquivos
+    
+
+  url - trabalha com endereços urls
+    parse - resgata partes da url host, path, search query
