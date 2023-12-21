@@ -56,3 +56,19 @@ Core Modules fundamentais
   os - extrai infos do S.O.
 
 Rotas são as paginas
+
+iniciar um projeto rapidamente - npm init -y
+
+npmjs.com - site onde todos os modulos podem ser encontrado.
+
+para instalar packages somente para o projeto em desenvolvimento, para isso usamos a flag --save-dev, exemplo seria o nodemon
+
+npm update - atualiza os packages
+npx - executador de packages, ex instalação do react, ex na aula 6 npx cowsay "Texto que quiser"
+
+npm run - cria uma rotina(script) de execução de comandos, essa configuração é feita no package.json na parte de script
+  Ex: para automatizar a execução do comando node index.js, dentro do obj script do package json, inserimos o comando, exemplo na aula 5
+
+package global - flag -g, nao fica salvo na pasta node_modulos e sim na maquina, assim podendo ser acessodo diretamente pelo terminal, em alguns caso é necessario usar o npm link para poder utilizar o pacote no projeto  
+
+npm uninstall - desinstala packages
