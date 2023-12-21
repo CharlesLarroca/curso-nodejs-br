@@ -37,8 +37,22 @@ Core Modules fundamentais
     setHeader - altera o conteudo que será retornado
 
   path - trabalha o caminho dos arquivos
+    resolve - posibilita achar o caminho até o arquivo desejado
+    join - forma um path dinamico, com variaveis e valores fixos
+
   fs - leitura e escrita de arquivos
-    
+    readFile - le um arquivo existente
+    writeFile -  escreve
+    appendFile - atualiza o arquivo
+    unlink - remove arquivos
+    rename - renomeia arquivo
+    stat - informa detalhes do arquivo, tamanho, data de criação, se é um arquivo ou diretorio
+    existis - valida se diretorio existente
+    mkdir - cria diretorios
 
   url - trabalha com endereços urls
     parse - resgata partes da url host, path, search query
+
+  os - extrai infos do S.O.
+
+Rotas são as paginas
