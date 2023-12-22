@@ -1,0 +1,11 @@
+Projeto é uma 'conta bancaria', onde será possivel criar o nome da conta, inserir, consultar e sacar.
+Itulizará chalk para estilizar e inquirer para melhorar a abstração de dados, fs para adiministrar dados
+
+1º Passo - Instalamos e importamos o inquirer, chalk e fs, e configuramos o script start - node index.js no package.json
+
+2º Passo - criamos a function operation onde dentro dela chamaremos o inquirer para criar a lista de opções de ações a serem realizadas dentro do app, usaremos type, name, message e choice dentro do inquirer
+
+3º Passo - dentro do then() recebemos a escolha do user e partir dela iniciamos os metodos
+
+4º Passo - criar os metodos
+
