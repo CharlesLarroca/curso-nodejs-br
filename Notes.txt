@@ -165,3 +165,11 @@ css com handlebars é parecido com o express, basta linkar com os layouts
 BANCO DE DADOS
 
 Banco relacional - banco de dado(guarda os dados), tabelas(onde categorizamos os dados e inserimos), colunas(onde separamos os dados de uma tabela), dados, relacionamento(ligações entre as tabelas)
+
+MySQL - gerenciador de banco de dados.
+
+utilizaremos o xampp
+
+comandos terminal
+  1 - 
+  1 - mysql -u root
