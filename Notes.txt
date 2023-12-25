@@ -72,3 +72,96 @@ npm run - cria uma rotina(script) de execução de comandos, essa configuração
 package global - flag -g, nao fica salvo na pasta node_modulos e sim na maquina, assim podendo ser acessodo diretamente pelo terminal, em alguns caso é necessario usar o npm link para poder utilizar o pacote no projeto  
 
 npm uninstall - desinstala packages
+
+express - framework para nodejs - npm i express
+
+Rotas são as urls que acessamos, exemplo www.exemplo.com/rota1, www.exemplo.com/rota2
+
+setup express 
+  importar - require e usar
+  definir porta - 3000, 5500
+  criar rota - url que será acessada(get, post, delete, put, verbos do http)
+  metodo listen
+  sendfile - envia um arquivo como resposta
+  path é usado para acessar o diretorio e o arquivo
+
+nodemon - resolve o problema de ficar reiniciado a app, fazendo com que cada vez que uma alteração for feita no codigo o server seja reiniciado auto, necessario instalar como dev dependencias npm i --save-dev nodemon
+
+middlewares - codigos que ficam entre uma ação e outra, ex: validar se o user está logado, usasse o metodo use e o next()
+
+req.param.<nome> - acessamos paramentros pelo url enviada pelo user, ex /user/:id 
+
+envio de dados por post, são normalmente dados enviados de um form para uma url   
+  necessita de middlewares (ex express.json) para ler os dados do body
+  uma rota de metodo post
+
+
+MONOLITO - CODIGO BACK E FRONT JUNTOS
+
+route module - uma pasta onde todas as rotas serão alocadas e assim importadas para o arquivo principal
+
+inserir css é necessario usar um middlewares chamado express.static e salvar os arquivos de estilização dentro de um novo dir chamado public
+
+template engine - ferramenta que distribui a logica do produto para outros lugares deixando mais dinamica a pagina para o usuario(link diferentes e etc), utiliza o metodo mvc, engine que usaremos handlebars
+  torna layouts reutilizaveis
+
+handlebars - é uma template engine express-handlebars
+  dados dinamicos colocados no html entre {{}}, é possivel inserir condicionais e loops(if, else e each(parecido com o forEach))
+  Houve uma pequena alteração no Handlebars, que vai quebrar o código das aulas seguintes
+
+  Para reparar basta trocar esta linha de código:
+  app.engine('handlebars', exphbs())
+  Por esta:
+  app.engine('handlebars', exphbs.engine())
+  Basicamente, precisamos invocar este método engine, que antes era opicional para realizar algumas configurações extras, agora ele é obrigatório para o funcionamento do pacote
+
+  1 - instala express e handlebars
+  2 - importa os pacotes e adiciona ao express a engine handlebars
+  3 - criamos uma view no diretorio views com a ext handlebars ex home.handlebars
+  4 - metodo render para enviar a view para req
+
+  ex setup 
+  const express = require('express')
+  const exphbs = require('express-handlebars')
+  const path = require('path')
+
+  const app = express()
+
+  app.engine('handlebars', exphbs.engine())
+  app.set('view engine', 'handlebars')
+
+  app.get('/', (req, res) => {
+    res.render('home', {layout:false})//após ter um layout este atributo será removido
+  })
+
+Layout para template engine
+  1-pasta layout dentro de views
+  2-dentro do template colocamos uma tag{{{body}}} -> aqui sera inserido o corpo do site dinamicamente ex na aula 2 create layout
+
+passar dado para a view
+  1- atraves do metodo render que fica na rota da home no app.js
+  2- um obj com key e value
+  3- sintax {{dado}}
+
+condicionais
+  1-pode usar informa
+  2-sintax {{#if algumacoisa}} oque sera impresso caso seja true {{/if}}
+  3-sintax com else {{#if algumacoisa}} oque sera impresso caso cumpra um possibilidade {{else}} impresso a outra possibilidade {{/if}}
+
+estrutura de repetição
+  1-sintax {{#each}} ... {{/each}}
+  2-chamamos os itens no array com {{this}} 
+  3-enviar somente o necessário pra o front
+
+with permitir abstrair as propriedades do obj sem precisar referencia o obj, ex ao inves de acessar a propriedade {{user.name}}, seria necessário só {{name}}
+  1-sintax {{#with obj}} ... {{/with}}
+
+partials - são como mini templates que precisam ser repetidos em diversos locais da aplicação, necessario modificações na implementação, parecido com componentes em react
+  1- ficam no diretorio views/partials
+  2- sintax {{> partial}}
+
+css com handlebars é parecido com o express, basta linkar com os layouts
+
+BANCO DE DADOS
+
+Banco relacional - banco de dado(guarda os dados), tabelas(onde categorizamos os dados e inserimos), colunas(onde separamos os dados de uma tabela), dados, relacionamento(ligações entre as tabelas)

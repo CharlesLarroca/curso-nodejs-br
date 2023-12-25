@@ -1,0 +1,7 @@
+<h1>This is the home page made with handlebars e layout!</h1>
+<p>O nome do user é {{user.name}} {{user.surname}} </p>
+<p>Sua idade é de {{idade}} anos.</p>
+
+{{#if auth}}
+  <p>Você está autenticado, <a href="/dashboard">clique aqui</a> para acessar a dashboard.</p>
+{{/if}}

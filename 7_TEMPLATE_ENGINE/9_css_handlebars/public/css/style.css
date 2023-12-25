@@ -1,0 +1,18 @@
+h1{
+  color:red
+}
+
+h2{
+  color: blue
+}
+
+p{
+  color: purple
+}
+
+body{
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
