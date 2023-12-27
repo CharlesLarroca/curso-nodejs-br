@@ -171,5 +171,46 @@ MySQL - gerenciador de banco de dados.
 utilizaremos o xampp
 
 comandos terminal
-  1 - 
-  1 - mysql -u root
+  1 - ir em variaveis de ambientes
+  2 - editar path inserindo o caminho das pasta c:\xampp\mysql\bin\
+  3 - abnrir xampp e dar start no mysql - sempre que for usar
+  4 - mysql -u root - sempre que for usar
+  5 - workbench instalar (ferramenta de visualização)
+
+integrando node e MySQL
+  1- package mysql npm
+  2 - configura o padrão do express
+  3 - cria a config de conexão, no caso usaremos este padrão 
+    const conn = mysql.createConnection({
+      host: 'localhost', 
+      user: 'root',
+      password: '',
+      database: 'nodemysql'
+    })
+  4 - estabelecendo a conexão
+    conn.connect(function (err) {
+      if(err){
+          console.log (err)
+      }
+
+      console.log('Conectado ao MySQL')
+
+      app.listen(3000)
+    })
+  5 - criar o banco de dados no workbench
+    1-clique no botão de criar banco de dados e dar o mesmo nome que demos no database
+    2-npm start
+
+criando tabela, no caso onde iremos inserir os dados a serem manipulados, no ex a tabela se chamara books e usaremos para cadastrar livro com as seguintes infos titulo e numero de paginas
+  1-clica em new table e insere o nome e as colunas que serão utilizadas (title, page e id)
+
+inserir dados 
+  1- criar e executar query(metodo do mysql)
+  2- usaremos o insert para inserir dados exemplo aula 2
+
+resgatando dados
+  1- criar e executar uma nova query
+  2 - metodo select agora que retorna os dados para inserirmos na views
+
+resgatar dado especifico
+  1 -metodo where, filtra pela coluna e valor
