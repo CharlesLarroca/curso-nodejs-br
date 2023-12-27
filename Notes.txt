@@ -214,3 +214,27 @@ resgatando dados
 
 resgatar dado especifico
   1 -metodo where, filtra pela coluna e valor
+
+editar dados
+  1 - resgatar o dado a ser editado
+  2 - preenchemos o formulario dos dados, mostrando tudo que tem cadastrado daquele dados
+  3 - mostro para o user escolher oque editar
+
+enviar dados editados
+  1 - rota post
+  2 - query update
+  3 - passar o id do livro para localizar corretamente o dado
+
+remover dados
+  1 - rota post com id
+  2 - query delete
+
+Utilizando driver connection pool
+  Cria um cache de dados, tornando muito mais agi
+  Criasse uma pasta db e o arquivo conn.js, import o drive mysql
+  cria o pool utilizando os dados da createConnection e inserindo o coonectionLimit
+
+preparando as queries, para evitar sql injection
+utilizasse ? ao inves de valores
+um segundo passo é executado para mandar os dados corretamente
+obrigatorio utilizar em aplicações reais
