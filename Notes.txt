@@ -238,3 +238,13 @@ preparando as queries, para evitar sql injection
 utilizasse ? ao inves de valores
 um segundo passo é executado para mandar os dados corretamente
 obrigatorio utilizar em aplicações reais
+
+SEQUELIZE
+ORM (Object relation mapper), abstrai a complexidade das queries
+normalmente é menos performatica que realizar os comando puros de sql
+baseado em promises(then e catch)
+Necessário criar um model(reflexo do que sera nossa tabela em forma de classe)
+necessário instalar via npm
+a config da conexão segue praticamente o mesmo padrão do outro pacote(mysql) - banco, usuario e senha, por isso vamos reutilizar parte do que ja existe do mod anterior, ver mod 9-1-bd-conn
+necessario instaciar a class sequelizwe
+é possivel checar conexão com o metodo authenticate
