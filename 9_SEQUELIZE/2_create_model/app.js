@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const conn = require('./db/conn')
+const User = require('./models/User')
 
 const app = express()
 
@@ -22,5 +23,9 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
-app.listen(3000)
-console.log('http://localhost:3000')
+//Criasse a conexão e juntamente com ela a criação da tabela
+conn.sync()
+  .then(() => {
+    app.listen(3000)
+  })
+  .catch(err => console.log(err))

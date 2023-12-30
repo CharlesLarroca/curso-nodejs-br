@@ -6,12 +6,14 @@ const sequelize = new Sequelize('nodesequelize', 'root', '', {
     dialect: 'mysql' //tipo de db que queremos integrar(mariadb, mysql e etc)
 })
 
-try {
-    sequelize.authenticate()
-    console.log('Conectamos com sucesso com o Sequelize.')
-} catch (error) {
-    console.log('Não foi possivel conectar: ', error)
-}
+//Foi removido para que o model seja aplicado no banco
+
+// try {
+//     sequelize.authenticate()
+//     console.log('Conectamos com sucesso com o Sequelize.')
+// } catch (error) {
+//     console.log('Não foi possivel conectar: ', error)
+// }
 
 module.exports = sequelize
 

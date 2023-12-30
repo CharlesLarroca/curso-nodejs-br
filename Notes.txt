@@ -248,3 +248,44 @@ necessário instalar via npm
 a config da conexão segue praticamente o mesmo padrão do outro pacote(mysql) - banco, usuario e senha, por isso vamos reutilizar parte do que ja existe do mod anterior, ver mod 9-1-bd-conn
 necessario instaciar a class sequelizwe
 é possivel checar conexão com o metodo authenticate
+necessario instalar o mysql2
+
+
+model
+para criar precisamos instaciar uma classe que representara uma tabela
+por convensão o a tabela criada de um model recebe o nome do mesmo no plurar, ex model user, tabela usaremos
+campos e tipos são colocados como propriedades do model
+metodo sync faz a criação das tabelas, baseado no model
+
+inserir dados - necessario importar o model para o arquivo que sera executado, metodo create será utilizado e leva como parametro todos os campos e insere na tabela
+
+lendo dados - metodo fetchAll para ler os dados e da mesma maneira precisa do model,
+vem formatado em um obj especial, que precisamos converter para um array, para isso precisamos inserir um parametro, no caso o raw como true
+
+utilizando o where - precisam,os inserir um novo paramentro (where), onde colocamos as propriedades e valores que desejamos, e para retorna apenas um resultado usamos o findOne
+
+delete - metodo destroy, parecida com resgatar um user, ao inves de rota get será post e com um redirect para a home
+
+editar dados - primeiro resgatamos os dados, preenchemos o form com os dados resgatados para assim dar o update, vamos utilizar o findOne para localizar e preencher o form, e para atualizar vamos usar o metodo update e o where para filtrar onde será editado no DB
+
+refazer tabela - recostruir do 0 a tabela, metodo sync onde sincroniza os models e tabelas e atributo force como true sync({force: true}), todos os dados salvos anteriormente serão perdidos
+
+Relacionamentos
+Em Db relacionais é possivel relacionamentos entre tabelas
+Com sequelize é preciso dois models ou mais
+Criar um metodo de relacionamento em algum dos models
+Após o sync uma coluna que tem relação entre ambas as tabelas será criada (foreign key)
+
+adicionando dado relacionado
+praticamente o mesmo fluxo de adicionar dados, porem precisamos passar o ID do irtem que se relacionadoinput hidden pode ser utilizado dentro do form que contem os dados do novo item em uma nova rota
+
+resgatando dados relacionados
+definir as relações entres os model (neste caso faremos no model de address)
+utilizar operador include com o nome do model, onde estamos resgatando os dados
+remover o raw pois a dados relacionados 
+
+removendo relacionados
+mesmo processo para remoção de user
+será criado um form que envia o id do item e uma rota para executar a remoção com o metodo destroy
+
+MVC

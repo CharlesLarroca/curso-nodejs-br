@@ -1,0 +1,60 @@
+*{
+    font-family: helvetica;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+.form {
+    width: 450px;
+    margin: 0 auto;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5em;
+}
+
+.form-control label{
+    font-weight: bold;
+    margin-bottom: .3em;
+}
+
+.form-control input{
+    margin-bottom: .3em;
+    padding: 5px;
+}
+
+#navbar{
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#navbar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar ul li{
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+#navbar ul li:first-child{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#navbar ul li:last-child{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
