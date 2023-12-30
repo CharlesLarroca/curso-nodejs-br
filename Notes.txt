@@ -289,3 +289,27 @@ mesmo processo para remoção de user
 será criado um form que envia o id do item e uma rota para executar a remoção com o metodo destroy
 
 MVC
+  Model View Controller - um padrão de arquitetura de software pára deixar a aplicação mais organizada
+    Model - Formatação de como os dados serão organizados na tabela (banco de dados), normalmente interage com o DB
+    View - o front end, interage com o Controller
+    Controller - a logica da aplicação interage com model e view, tem um codigo parecido com as rotas
+
+  Estrutura
+    Controller - pastas de Controller, igual ou maior que numero de models, uma classe que contem as func com a logica de cada rota, podem ser para encaminhar views ou passar dados para os models, necessario importar o model que será utilizado
+
+    Models - pasta de Models, nome sempre iniciando em maiuscula(classe)
+    
+    Views - pasta de views
+    
+    Routes - pasta de rotas, relacionado aos controllers, usará o router, cada rota terá um controller, onde em cada uma usaremos as funções do controller(necessario importar o controller, mas não é necessario instanciar a classe pois os metodos são estaticos), necessário importar as rotas para o app.js
+    
+    index.js - arquivo que inicia a aplicação
+    
+    db - com arquivo conn.js, cria a conexão com o banco e cria o banco(seguir padrão)
+
+    packages
+      express
+      express-handlebars
+      mysql2
+      sequelize
+      nodemon
