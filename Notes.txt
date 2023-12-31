@@ -313,3 +313,16 @@ MVC
       mysql2
       sequelize
       nodemon
+
+    Para criar um dado dentro do controller utilizamos o metodo nomedomodel.create que é passado atraves de uma rota de post
+    
+    Para leitura usamos o metodo findAll dentro do controller que é acionado atraves de uma rota get
+
+    Para remover usamos o metodo desdtroy dentro do controller que é acionado de uma rota post
+
+    Para editar um dado, resgatamos o dado e inserimos o mesmo em um form em uma nova view,
+    criasse uma nova rota get com o id
+
+    Para realizar o update da tarefa editada é necessário uma rota de post e um novo controller que receba os dados e envie com o where oara o id correto
+
+    Para atualizar o status da tarefa, criaremos uma rota de update para atualizar apenas o atributo done, envolvemos o botão em um form assim como o delete e inserimos alem do input hidden de id, um input do mesmo tipo para o atributo done
