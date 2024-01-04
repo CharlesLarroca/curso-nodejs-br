@@ -50,12 +50,57 @@ module.exports = class AuthController{
 
       // Metodo para enviar dados ao DB
       try {
-        await User.create(user)
+        const createdUser = await User.create(user)
+
+        // Ao cadastrar o user ja será logado, para isso iniciaremos a sessão e salvaremos e com isso os links da navbar ficaram dinamicos
+        req.session.userid = createdUser.id // atribui ao session.userid o id de criação do user, fazendo com que a condição no app seja true, assim fazendo que uma sessão seja criada e salva
+
         req.flash('message', 'Cadastro Realizado com sucesso!')
-        res.redirect('/')
+
+        // Salvamos a sessão antes do redirecionamento
+        req.session.save(() => {
+          res.redirect('/') // Apareceu apenas após salvar a sessão, anteriormente aparecia ao clicar em outro link
+        })        
       } catch (error) {
-        console.log(err)
+        console.log(error)
       }
       
     }
+    // Metodo para destruir a sessão do user
+    static logout(req, res){
+      // Metodo destroy apaga a sessão
+      req.session.destroy()
+      res.redirect('/login')
+    }
+
+    // Metodo para realizar login
+    static async loginPost(req, res){
+      // Capturando dos enviados pelo body via desctructring
+      const {email, password} = req.body
+      
+      // Validação se email(user) existe
+      const user = await User.findOne({where: {email: email}})
+      if(!user){
+        req.flash('message', 'Usuário não encontrado!')
+        res.render('auth/login')
+
+        return
+      }
+
+      // Validação de senha
+      const matchPassword = bcrypt.compareSync(password, user.senha)
+      if(!matchPassword){
+        req.flash('message', 'Senha inválida!')
+        res.render('auth/login')
+
+        return
+      }
+      req.session.userid = user.id
+
+      req.flash('message', 'Login realizado com sucesso!')
+       
+      req.session.save(()=> {
+        res.redirect('/')
+    })
+  }
 }

@@ -41,7 +41,7 @@ app.use(
         saveUninitialized: false,
         store: new FileStore({
             logFn: function(){}, // Função para login da sessão
-            path: require('path').join(require('os').tmpdir(), 'session') // Local onde serão salvas as sessões
+            path: require('path').join(require('os').tmpdir(), 'sessions') // Local onde serão salvas as sessões
         }),
         cookie: ({
             secure: false,

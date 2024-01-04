@@ -40,4 +40,11 @@ Utilizaremos middlewares de authentificação, flash messages, ferramentas de bu
 4º Passo - Criar autenticação
     Autenticação - criar rota e controller(criar metodo para render de login e register)
     Criar User e Senhas - form de registro e criar rota post e metodo dentro do controller para enviar ao DB e iniciar utilização de flash messages
-    Login e logout
+    Login e logout - metodo findOne para recuperar dados do db e .compareSync
+    Middleware de validação do login
+
+5º Passo - Pagina de toughts e formulario de toughts
+    Enviar dados para o db e realizar um each dentro da dashboard meus pensamentos
+    Metodo includes dentro do findOne e um map para resgatar apenas o title
+
+6º passo - Homepage, busca e ordenação, utilizando uma unica rota e metdo que seria o show toughts
