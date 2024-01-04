@@ -326,3 +326,8 @@ MVC
     Para realizar o update da tarefa editada é necessário uma rota de post e um novo controller que receba os dados e envie com o where oara o id correto
 
     Para atualizar o status da tarefa, criaremos uma rota de update para atualizar apenas o atributo done, envolvemos o botão em um form assim como o delete e inserimos alem do input hidden de id, um input do mesmo tipo para o atributo done
+
+NoSQL - São bancos focados em documentos(json) (documents) ao inves de tabelas(colunas), model é opcional, não é utilizado queries e sim metodos de classe. Existem collection e nao tabelas, mongoDB é o mais popular
+
+MongoDB - Banco orientado a documento, os dados ficam salvos em formato parecido com JSON
+  Instalar MongoDB e MongoDB tools
