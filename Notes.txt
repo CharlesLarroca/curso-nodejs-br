@@ -331,3 +331,62 @@ NoSQL - São bancos focados em documentos(json) (documents) ao inves de tabelas(
 
 MongoDB - Banco orientado a documento, os dados ficam salvos em formato parecido com JSON
   Instalar MongoDB e MongoDB tools
+
+  Principais Entidades
+    database -  é onde ficam as collections e dados
+    collections - tabelas onde serão inseridos os dados
+    documents - são os dados
+    BSON -  dado inserido no mongo, estrutura igual JSON  
+        {
+          propriedade: valor(string, number e etc),
+        } 
+  Alguns comandos
+    cls - limpa o console do cmder
+    showdbs - apresenta os bancos de dados da maquina
+    use nomedoDB -  cria um db
+    db. - informa ao mongo que queremos realizar algo no db que acessamos anteriormente
+    db.nomecollection - cria uma collection
+    insertOne(dados em formato BSON) - metodo para inserir um dado
+    db.firstcollection.findOne({insiro aqui o filtro}) - metodo para encontrar um dado
+
+Conectando ao node  
+  instalar drive mongoDB
+  criar conexão baseado em url com protocolo mongodb:// atraves da classe MongoCliente
+  utilizaremos as mesmas tecnologias de projetos anteriores, express, handlebars e nodemon e etc
+
+Projeto estudos
+ Paginas e envio de dados
+  Criamos um mvc, com rota, controller e view
+  Criamos uma conexão com o mongoDB
+  Criamos um model que é uma classe em JS
+  Criamos um metodo de save com o insertOne na mão
+  Criamos um form para interagir com a rota
+  Dentro do controller instanciamos um novo obj e passamos os paramentros
+  Invocamos a função save e ao inserirmos os dados no form e enviarmos, os mesmo serão salvos no mongoDB
+ 
+ Resgatando dados  
+  Utilizaremos o metodo find (para resgatar todos os dados)
+  Converteremos o formado que os dados vieram (cursor (um array de obj, que nao é possivel iterar)) para um array com o toArray
+  utilizaremos o {{#each}} para enviar os dados para a view
+  utilizaremos o findOne (para resgatar somente um dado)
+  Filtro que uisaremos vai ser o _id
+  Por conta do formato que os dados vem do mongo db é necessario importar um novo obj do mongo db que seria o ObjectID, para utiliza-lo é necessario seguir desta forma new ObjectId(id)
+ 
+ Deletando dados 
+  Metodo deleteOne, usaremos o mesmo localizador que o anterior _id, com new ObjectId(id)
+ 
+ Editando dados
+  Metodo parecido com o getProduct, porem usaremos o atributo value para preencher os campos de ecição
+  Para enviar ao DB utilizaremos o metodo updateOne onde informaremos o Id e os dados
+
+mongoose
+ ODM - Object Data Map
+ Declarado um model para interação com a collection, parecido com oque o Sequelize/SQL faz
+ Assim como ORM as ODM possui metodos prontos para intereçaõ com o DB
+ Para adaptar do mongoDb para o mongoose iniciamos pelo conn, onde importamos o mongoose, criamos uma func async e utilzamos o metodo connect passando a uri padrão e o nome do DB
+ criar schema - criar no model que será o esqueleto do elemento a ser inserido na collection
+ Para inserir dados usaremos o metodos save do proprio mongoose
+ Para resgatar usamos o metodo find e o metodo lean para formatar os dados para a view renderizar
+ para resgatar apenas um dado usamos o metodo findById(e nao precisamos converter para o formato BSON com o ObjectId pois o mongoose ja faz isso) e o metodo lean
+ Para realizar o update usamos o metodo usamos o metodo findById novamente e para enviar os novos dados ao DB usamos updateOne e passamos o _id e o object com os dados
+ Para deletar os dados utilizamos o deleteOne e passamos o id do dado
