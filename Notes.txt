@@ -390,3 +390,26 @@ mongoose
  para resgatar apenas um dado usamos o metodo findById(e nao precisamos converter para o formato BSON com o ObjectId pois o mongoose ja faz isso) e o metodo lean
  Para realizar o update usamos o metodo usamos o metodo findById novamente e para enviar os novos dados ao DB usamos updateOne e passamos o _id e o object com os dados
  Para deletar os dados utilizamos o deleteOne e passamos o id do dado
+
+API
+  Interface de Programação de aplicações(Aplication Programming Interface)
+  Um forma de comunicação simples entre aplicações  
+  Resposta em JSON
+  Não precisa de uma view, ou um  front-end
+  Req e Res  
+
+ REST e RESTFUL
+  Rest é um padrão de arquitetura de uma api, e caso a mesma siga todos estes padrões é considerada uma RESTful, alguns pontos seriam, respostas uniformes/padronizadas, sem ligação de estado, cache de resposta e etc
+ 
+ SPA - Single Page Aplication, front-end é separado o back-end, os frameworks atuais como react, angular e vue, funcionam desta maneira
+  Toda o front é carregado instantamente e quem comanda a aplicação é o JS, quando interagimos com a pagina ela não é recarregada, apenas os conteudo via DOM é alterado via JS 
+
+ Verbos HTTP, get(resgatar dados), post(enviar dados), put(atualização de todos os dados), delete e patch(atualização parcial dos dados), cada um representa uma ação na api que é enviada atraves de uma requisição 
+
+ Para criar é bem mais simples que o que fizemos até o momento, basta instalar o express e utilizamos rotas para comunicação entre api e aplicação e que responde com JSON
+
+ Postman é um client para testes de api, auxilia na visualização do backend, podemos simular verbos, req.body, inserir headers e etc
+  precisamos usar o verbo correto e inserir a url, e configurar o client
+  para resgatar um dado usamos o verbo get e inserimos a url e rota
+  para enviar um dado via req.body, usamos o metodo post inserimos a url e rota, vamos na aba body e clicamos em raw e json
+  podemos enviar e configurar tambem mensagens via numero de status, 200, 404 e etc, para isso entre a res e metodo json enviar um status HTTP, usamos o metodo status 
