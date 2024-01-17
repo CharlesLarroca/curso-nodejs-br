@@ -120,5 +120,131 @@ module.exports = class PetController{
 
     res.status(200).json({ message: 'Pet removido com sucesso!' })
   }
+
+  static async updatePet(req, res){
+    const id = req.params.id
+
+    //Validamos se o Id passado é um id valido usando o ObjectId presente no mongoose e o metodo isvalid
+    if(!ObjectId.isValid(id)) return res.status(422).json({ message: 'Este id inválido!'})
+
+    const pet = await Pet.findOne({ _id: id })
+
+    if(!pet) return res.status(404).json({ message: 'Pet não encontrado!'})
+
+    // check if logged user registered the pet
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+
+    if(pet.user._id.toString() !== user._id.toString()) return res.status(422).json({ message: 'Houve um problema em processar sua solicitação, tente novamente mais tarde!'})
+
+    //Capturando os dados
+    const {name, age, weight, color, available} = req.body
+
+    // Upload de imagens
+    const images = req.files
+
+    // Novo objeto
+    const updateData = {}
+
+    //Validations
+    if(!name){
+      res.status(422).json({ message: 'O nome é obrigatório!'})
+      return
+    }else{
+      updateData.name = name
+    }
+    if(!age){
+      res.status(422).json({ message: 'A idade é obrigatória!'})
+      return
+    }else{
+      updateData.age = age
+    }
+    if(!weight){
+      res.status(422).json({ message: 'O peso é obrigatório!'})
+      return
+    }else{
+      updateData.weight = weight
+    }
+    if(!color){
+      res.status(422).json({ message: 'A cor é obrigatória!'})
+      return
+    }else{
+      updateData.color = color
+    }
+    if(images.length === 0){
+      res.status(422).json({ message: 'A imagem é obrigatória!'})
+      return
+    }else{
+      updateData.images = []
+      images.map(image => {
+        updateData.images.push(image.filename)
+      })
+    }
+    if(!available){
+      res.status(422).json({ message: 'A disponibilidade é obrigatória!'})
+      return
+    }else{
+      updateData.available = available
+    }
+
+    //Metodo para realizar o update do pet
+    await Pet.findByIdAndUpdate({_id: id}, updateData)
+
+    res.status(200).json({ message: 'Pet atualizado com sucesso!' })
+  }
+
+  static async schedule(req, res){
+    const id = req.params.id
+
+    //Validamos se o Id passado é um id valido usando o ObjectId presente no mongoose e o metodo isvalid
+    if(!ObjectId.isValid(id)) return res.status(422).json({ message: 'Este id inválido!'})
+
+    const pet = await Pet.findOne({ _id: id })
+
+    if(!pet) return res.status(404).json({ message: 'Pet não encontrado!'})
+
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+
+    if(pet.user._id.toString() == user._id.toString()) return res.status(422).json({ message: 'Não é possivel agendar visita de pet registrado por você!'})
+
+    // check if user already scheduled a visit
+    if(pet.adopter){
+      if(pet.adopter._id.equals(user._id)) return res.status(422).json({ message: 'Você já agendou uma visita!'})
+    } 
+
+    //add user to pet
+    pet.adopter = {
+      _id: user._id,
+      name: user.name,
+      image: user.image
+    }
+
+    await Pet.findByIdAndUpdate(id, pet)
+
+    res.status(200).json({ message: `Visita agendada com sucesso! Entre em contato com ${pet.user.name} no telefone ${pet.user.phone}.` })
+  }
+
+  static async concludeAdoption(req, res){
+    const id = req.params.id
+
+    //Validamos se o Id passado é um id valido usando o ObjectId presente no mongoose e o metodo isvalid
+    if(!ObjectId.isValid(id)) return res.status(422).json({ message: 'Este id inválido!'})
+
+    const pet = await Pet.findOne({ _id: id })
+
+    if(!pet) return res.status(404).json({ message: 'Pet não encontrado!'})
+
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+
+    if(pet.user._id.toString() !== user._id.toString()) return res.status(422).json({ message: 'Houve um problema em processar sua solicitação, tente novamente mais tarde!'})
+
+    pet.available = false
+
+    await Pet.findByIdAndUpdate(id, pet)
+
+    res.status(200).json({ message: `Adoção concluida com sucesso! ${pet.name} pertence ao ${pet.adopter.name}`})
+  }
 }
 

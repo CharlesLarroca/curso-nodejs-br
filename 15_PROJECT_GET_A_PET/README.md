@@ -1,5 +1,7 @@
 Projeto Get a Pet
 
+Backend
+
 1º Criamos as pastas backend e frontend
 2º Iniciamos um projeto na pasta do backend e instalamos o bcrypt para criptografia de senha, cookei-parse, cors auxiliar para enviarmos req para o mesmo dominio(visto que aplicação e api estarão no mesmo server), express, jsonwebtoken(para autentificação do backend) mongoose multer(para upload de fotos) e nodemon
 3º app.js onde será o ponto inicial do aplicativo
@@ -22,7 +24,17 @@ Projeto Get a Pet
 19º Resgatar todos os pet cadastrados
 20° resgatar os pets cadastrados no user
 21º resgatar todas as adoções que o user quer realizar
-22º resgatar os dados do pet pelo id
-23º removendo pet do sistema
-24º atualizando o pet
-25º criando função para agendamento de visita
+22º resgatar os dados do pet pelo id findOne
+23º removendo pet do sistema findOneAndDelete
+24º atualizando o pet rota patch, metodo findOneAndUpdate
+25º criando função para agendamento de visita, envio a solicitação de agendamento e recebo os dados do dono
+26º concluindo a visita e alterando o status de disponibilidade
+
+Front End
+1º Iniciar um proj em react, npx create-react app ., instalar axios(para conexão com a api), events, react-icons, react-router-dom(realiza o roteamento de paginas, parecido com o router do express, ^5.3.0)
+2º criar arquivo .env e criar variavel de ambiente para a url padrão que utilizamos, no caso localhost:5000
+3º Configuro o ambiente e removo oque não será utilizado, mantendo por ex apenas App.js, index.css e index.js na pasta src e na public trocamos o icon e alteramos o title do html, limpamos os pacotes que nao estão sendo utilizados no app e index e inserimos um h1 para iniciar o front end, e para finalizar criaremos a estrutura de pastasa assets(arquivos estaticos), components(a estrutura do react é atreves de components(funções e paginas)), context(pasta que armazenará blocos de codigos reutilizaveis), hooks (blocos de codigo que funcionam como ganchos na aplicação, por ex a apresentação de flash messages) e utils(parecido com a pasta helpers)
+4º utilizando alguns objetos do react-router e melhorar no css, alem de criar algumas rotas e paginas de login, home e register, importando e inserindo dentro da estrutura de roteamento
+5º estruturando navbar e footer
+6º estilando navbar e footer com o componentstyle ou css modules onde criamos um arquivo no mesmo nivel do component que receberá a estilização
+7º Criando o component container e formulario de cadastro com component input criado por nós e finalizar com estilização
