@@ -17,7 +17,7 @@ module.exports = class UserController{
     if(!phone) return res.status(422).json({ message: 'Um telefone de contato é obrigatório!'})
     if(!password) return res.status(422).json({ message: 'A senha é obrigatória!'})
     if(!confirmpassword) return res.status(422).json({message: 'A confirmação de senha é obrigatória!'})
-    if(confirmpassword !== password) return res.status(422).json({ message: 'Senhas não conferem!'})
+    if(confirmpassword != password) return res.status(422).json({ message: 'Senhas não conferem!'})
 
     // check if user exists
     const userExists = await User.findOne({ email: email})
@@ -46,8 +46,6 @@ module.exports = class UserController{
     } catch (error) {
       res.status(500).json({ message: error})
     }
-
-    res.json({ message: 'User registrado com sucesso' })
   }
 
   static async login(req,res){
@@ -116,6 +114,7 @@ module.exports = class UserController{
 
     const {name, email, phone, password, confirmpassword} = req.body
     // validamos se veio algum arquivo do req.file(arquivos são enviados por aqui), caso sim atribuimos o nome do arquivo enviado a variavel image
+
     if (req.file) {
       user.image = req.file.filename
     }
@@ -135,10 +134,10 @@ module.exports = class UserController{
     if(!phone) return res.status(422).json({ message: 'Um telefone de contato é obrigatório!'})
     user.phone = phone
 
-    if(password !== confirmpassword) {
+    if(password != confirmpassword) {
       res.status(422).json({ message: 'Senhas não conferem!'})
       return
-    } else if (password === confirmpassword && password !== null) {
+    } else if (password == confirmpassword && password != null) {
       // create password
       const salt = await bcrypt.genSalt(12)
       const hashPassword = await bcrypt.hash(password, salt)

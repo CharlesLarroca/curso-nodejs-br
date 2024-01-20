@@ -6,10 +6,17 @@ import {Link} from 'react-router-dom'
 
 import Logo from '../../assets/img/logo.png'
 
+/*context*/
+import { Context } from '../../context/UserContext'
+
 //Importando a estilização para o component e importar a estilização como se fosse a propriedade de um obj
 import styles from './Navbar.module.css'
+import { useContext } from 'react'
 
 function Navbar(){
+
+  const {authenticated, logout} = useContext(Context)
+
   return(
     <nav className={styles.navbar}>
       <div className={styles.navbar_logo}>
@@ -20,12 +27,33 @@ function Navbar(){
         <li>
           <Link to='/'>Adotar</Link>
         </li>
-        <li>
-          <Link to='/login'>Login</Link>
-        </li>
-        <li>
-          <Link to='/Register'>Cadastro</Link>
-        </li>
+        {
+          authenticated ? 
+          (
+            <>
+            <li>
+                <Link to='/pet/mypets'>Meus Pets</Link>
+            </li>
+            <li>
+                <Link to='/user/profile'>Perfil</Link>
+            </li>
+            <li onClick={logout}>
+                Logout
+            </li>
+            </>
+          ) 
+          : 
+          (
+            <>
+              <li>
+                <Link to='/login'>Login</Link>
+              </li>
+              <li>
+                <Link to='/Register'>Cadastro</Link>
+              </li>
+            </>
+          )
+        }
       </ul>
     </nav>
   )

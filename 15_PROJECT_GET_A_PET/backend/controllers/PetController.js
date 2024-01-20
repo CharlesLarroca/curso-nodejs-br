@@ -116,7 +116,7 @@ module.exports = class PetController{
     if(pet.user._id.toString() !== user._id.toString()) return res.status(422).json({ message: 'Houve um problema em processar sua solicitação, tente novamente mais tarde!'})
 
     // Metodo deleteOne para remover
-    await Pet.findOneAndDelete({ id })
+    await Pet.findByIdAndDelete(id)
 
     res.status(200).json({ message: 'Pet removido com sucesso!' })
   }
@@ -171,24 +171,15 @@ module.exports = class PetController{
     }else{
       updateData.color = color
     }
-    if(images.length === 0){
-      res.status(422).json({ message: 'A imagem é obrigatória!'})
-      return
-    }else{
+    if(images.length > 0){
       updateData.images = []
       images.map(image => {
         updateData.images.push(image.filename)
       })
     }
-    if(!available){
-      res.status(422).json({ message: 'A disponibilidade é obrigatória!'})
-      return
-    }else{
-      updateData.available = available
-    }
 
     //Metodo para realizar o update do pet
-    await Pet.findByIdAndUpdate({_id: id}, updateData)
+    await Pet.findByIdAndUpdate(id, updateData)
 
     res.status(200).json({ message: 'Pet atualizado com sucesso!' })
   }

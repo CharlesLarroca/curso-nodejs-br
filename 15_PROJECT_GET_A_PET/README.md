@@ -38,3 +38,23 @@ Front End
 5º estruturando navbar e footer
 6º estilando navbar e footer com o componentstyle ou css modules onde criamos um arquivo no mesmo nivel do component que receberá a estilização
 7º Criando o component container e formulario de cadastro com component input criado por nós e finalizar com estilização
+8º vincular front e back para enviar dados de registro ao DB, para isso será necessario criar um um obj para alterar o state de um user atraves de um hook chamado useState
+9° criando hook de authenticação, que ira criar um context para comunicar a aplicação 
+10° criar mensageria para validar erros usando um hook proprio useFlashMessage, criar um component de mensagens e estilizar, implementar mensagens dinamicas baseados no state do component
+11º Authenticar user cadastrado, para isso salvaremos o token que foi criado no localstorage e recuperar o token e inserir no authorizarion
+12º criar um condicional na nav para alterar as rotas de acesso a depender do estado de authenticação do user
+13º criar função de logout
+14º criar form para login e função de login
+15º criar pagina de perfil e rota onde serão os dados e a imagem do user todas as alterações serão realizadas no front e back
+16º criar formulario para edição do User e estiliza-lo
+17º resgatar os dados do user metodo get será utilizado fazemos um api.get na rota de checkuser e passamos os dados da resposta para o setUSer
+18º realizar o update dos dados do user realizamos um api.post na rota de updateuser, utilizaremos tambem o FormData para manipular e realizar um loop nos dados recebidos
+19º Atualizar a imagem do user, primeiro precisaremos renderizar a img se ela existir e torna-la um preview, após o envio para o DB ela permanece como imagem do user, necessario usar o useState e criar uma url com base na url da api
+20º componente de imagem, onde faremos as configs de tamanho e como a imagem será exibida
+21° criando a lista de pets, component mypets, inserir na navbar quando logado, inserir o component e rota no app
+22º pagina de cadastro do pet pet/add, criaremos o component form na pasta form para que possa ser reutilizado como cadastro ou edição, utilizaremos um inoput de select para escolher as cores do array que criamos no component
+23º iniciar a pagina de mypets, primeiro preencheremos o state com os pets cadastrados, iniciaremos resgatando o token do localstorage, após isso chamamos a api fazendo um useEffect com verbo gets na rota pets/mypets e usando o token como referencia, configuraremos os bot~eos de concluir adoção, editar e excluir e realizaremos a estilização
+24º função de excluir pet, onde pegamos o id do botão clicado relacionado a key id do pet, realizamos uma nova chamada da api com o verbo delete na rota delete, e simultaneamente atualizamos o state para uma nova lista sem o pet a ser excluido
+25º estutura de edição do pet no component editPets, coloco a rota no app.js, criando o form e preenchendo com os dados, e utilizaremos os parementros da url, criamos uma função para realizar o update, inserimos o PetForm preenchendo com os dados vindos da api
+26º criaremos a estrutura para apresentar os pets na home fazemos um get na api, após isso faremos um loop para apresentar os pets na home, e estilização
+27º pagina com detalhes do pet, com botão para adoção, criamos o component e fazemos um get na api e inserimos o componente no App.js
