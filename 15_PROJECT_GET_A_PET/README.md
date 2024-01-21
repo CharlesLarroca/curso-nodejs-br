@@ -58,3 +58,12 @@ Front End
 25º estutura de edição do pet no component editPets, coloco a rota no app.js, criando o form e preenchendo com os dados, e utilizaremos os parementros da url, criamos uma função para realizar o update, inserimos o PetForm preenchendo com os dados vindos da api
 26º criaremos a estrutura para apresentar os pets na home fazemos um get na api, após isso faremos um loop para apresentar os pets na home, e estilização
 27º pagina com detalhes do pet, com botão para adoção, criamos o component e fazemos um get na api e inserimos o componente no App.js
+28º criar a função de schedule, sera async e dentro do PetDetails onde apenas chamaremos a api para uma atualização e toda a func está criada no backend então precisamos chamar a função e fazer unm then e catch
+29º criar pagina de adoções, inserimos a rota na navbar e o component no app.js, apresentamos a primeira foto de cada pet com nome e o contato do tutor e o status de adoção
+30º conclusão da adoção
+
+//Proximos passos
+Validar motivo de flash messages de erro nao aparece o conteudo apenas o box, e somente nas funções onde a mensagem nao foi inserida manualmente, ex nome obrigatorio aparece, inserir mensagem com formato incorreto não
+
+Adendo atualização do router dom, switch foi removido e no lugar entrou Routes, useHistory e agora useNavigate e nao precisa colocar o meto push , os components nao ficam dentro de route e sim em uma prop chamada element e o route vira um self closed
+prop nova dentro da rota no app chamada exact, que identifica se aquela rota é exatamente a que queremos acessar

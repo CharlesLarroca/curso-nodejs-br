@@ -45,11 +45,29 @@ function MyPets(){
     
     setFlashMessage(data.message, msgType)
   }
+
+  async function concludeAdoption(id){
+    let msgType = 'success'
+
+    const data = await api.patch(`/pets/conclude/${id}`, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(token)}`
+      } 
+    }).then(response => {
+      return response.data
+    }).catch(error => {
+      msgType = 'error'
+      return error.response.data
+    })
+
+    setFlashMessage(data.message, msgType)
+  }
+
   // Para acionar a função de delete colocamos dentro de uma func anonima, pois no metodo tradicional de passar o nome da função e o argumento, a ação aconteceria somente apos o render da page
   return(
     <section>
       <div className={styles.petlist_header}>
-        <h1>MyPets</h1>
+        <h1>Meus Pets</h1>
         <Link to='/pet/add'>Cadastrar Pet</Link>
       </div>
       <div className={styles.petlist_container}>
@@ -66,7 +84,9 @@ function MyPets(){
                 {pet.available 
                   ? (<>
                     {pet.adopter && (
-                      <button className={styles.conclude.btn}>Concluir Adoção</button>
+                      <button className={styles.conclude.btn} onClick={() => {
+                        concludeAdoption(pet._id)
+                      }}>Concluir Adoção</button>
                     )}
                     <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
                     <button onClick={() => {

@@ -82,3 +82,12 @@
   color: #fff;
   border-color: #25b456;
 }
+
+/* My Adoption */
+.contacts{
+  margin-left: 1em;
+}
+
+.contacts p{
+  margin-bottom: .5em;
+}

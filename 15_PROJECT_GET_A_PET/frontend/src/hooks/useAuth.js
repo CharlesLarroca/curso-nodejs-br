@@ -6,13 +6,13 @@ import api from '../utils/api'
 //hooks para manipulação do obj
 import {useState, useEffect} from 'react'
 //hook para manipulação das rotas
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import useFlashMessage from './useFlashMessage'
 
 export default function useAuth(){
   const {setFlashMessage} = useFlashMessage()
   const [authenticated, setAuthenticated] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
 
   //inserir o token automaticamente para o headers da rota
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function useAuth(){
     localStorage.setItem('token', JSON.stringify(data.token))
 
     //redirecionamento para home
-    history.push('/')
+    navigate('/')
   }
 
   //Metodo de logout
@@ -86,7 +86,7 @@ export default function useAuth(){
     //atribuo undefined para authorization
     api.defaults.headers.Authorization = undefined
     //redireciono para home
-    history.push('/')
+    navigate('/')
 
     //aciono flash message
     setFlashMessage(msgText, msgType)

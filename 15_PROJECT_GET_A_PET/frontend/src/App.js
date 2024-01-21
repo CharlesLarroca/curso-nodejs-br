@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 /*Components*/
 import Navbar from './components/layout/Navbar'
@@ -15,45 +15,37 @@ import MyPets from './components/pages/Pet/MyPets'
 import AddPet from './components/pages/Pet/AddPet'
 import EditPets from './components/pages/Pet/EditPets'
 import PetDetails from './components/pages/Pet/PetDetails'
+import MyAdoptions from './components/pages/Pet/MyAdoptions'
 
 /*context*/
 import { UserProvider } from './context/UserContext'
 
 function App() {
   return (
-    /*Navbar e footer são importados fora do switch de roteamento, pois nao serão alterados*/
-    /* Inicia o roteamento de pagina, o switch recebe o caminho pelo route path, e dentro deles iremos inserir os components(paginas) que criamos */ 
+    /*Navbar e footer são importados fora do Routes de roteamento, pois nao serão alterados*/
+    /* Inicia o roteamento de pagina, o Routes recebe o caminho pelo route path, e dentro deles iremos inserir os components(paginas) que criamos */ 
     <Router>
       <UserProvider>
         <Navbar />
         <Message />
         <Container>
-          <Switch>
-            <Route path = '/login'>
-              <Login />
-            </Route>
-            <Route path = '/register'>
-              <Register />
-            </Route>
-            <Route path = '/user/profile'>
-              <Profile />
-            </Route>
-            <Route path = '/pet/mypets'>
-              <MyPets />
-            </Route>
-            <Route path = '/pet/add'>
-              <AddPet />
-            </Route>
-            <Route path = '/pet/edit/:id'>
-              <EditPets />
-            </Route>
-            <Route path = '/pet/:id'>
-              <PetDetails />
-            </Route>
-            <Route path = '/'>
-              <Home />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path = '/login' element={<Login />} />
+            <Route path = '/register' element={<Register />} />
+            <Route path = '/user/profile' element={<Profile />} />
+            <Route path = '/pet/mypets' element={<MyPets />} />
+              
+            <Route path = '/pet/add' element={<AddPet />} />
+              
+            <Route path = '/pet/edit/:id' element={<EditPets />} />
+              
+            <Route path = '/pet/myadoptions' element={<MyAdoptions />} />
+              
+            <Route path = '/pet/:id' element={<PetDetails />} />
+              
+            <Route path = '/' element={<Home />} />
+              
+          </Routes>
           </Container>
         <Footer />
       </UserProvider>
